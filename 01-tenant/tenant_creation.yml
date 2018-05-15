@@ -1,0 +1,14 @@
+---
+
+- name: aci tenant creation
+  hosts: aci
+  tasks:
+    - name: Add a new tenant
+      aci_tenant:
+        host: apic1
+        username: "{{ username }}"
+        password: "{{ password }}" 
+        validate_certs: no
+        tenant: Ansible
+        description: Ansible Created Tenant
+        state: present
