@@ -1,0 +1,15 @@
+---
+
+- name: aci tenant query
+  hosts: apic1
+  gather_facts: False
+
+  tasks:
+    - name: Query tenant
+      aci_tenant:
+        host: apic1
+        username: "{{ username }}"
+        password: "{{ password }}" 
+        validate_certs: no
+        tenant: Ansible
+        state: query

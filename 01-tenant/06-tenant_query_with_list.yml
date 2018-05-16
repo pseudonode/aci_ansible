@@ -1,0 +1,16 @@
+---
+
+- name: aci tenant creation
+  hosts: apic1
+  gather_facts: False
+
+  tasks:
+    - name: Add a new tenant
+      aci_tenant:
+        host: apic1
+        username: "{{ username }}"
+        password: "{{ password }}" 
+        validate_certs: no
+        tenant: "{{ item.name }}"
+        state: query
+      with_items: "{{ tenants }}"
