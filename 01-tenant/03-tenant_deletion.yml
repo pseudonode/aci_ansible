@@ -1,0 +1,16 @@
+---
+
+- name: aci tenant deletion
+  hosts: apic1
+  gather_facts: False
+
+  tasks:
+    - name: Removing Tenant
+      aci_tenant:
+        host: apic1
+        username: "{{ username }}"
+        password: "{{ password }}" 
+        validate_certs: no
+        tenant: Ansible
+        description: Ansible Created Tenant
+        state: absent

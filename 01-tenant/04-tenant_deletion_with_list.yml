@@ -1,0 +1,17 @@
+---
+
+- name: aci tenant deletion with list
+  hosts: apic1
+  gather_facts: False
+
+  tasks:
+    - name: Removing Tenant with list
+      aci_tenant:
+        host: apic1
+        username: "{{ username }}"
+        password: "{{ password }}" 
+        validate_certs: no
+        tenant: "{{ item.name }}"
+        description: "{{ item.description }}"
+        state: absent
+      with_items: "{{ tenants }}"
