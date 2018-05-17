@@ -1,0 +1,21 @@
+---
+
+- name: aci application query
+  hosts: apic1
+  gather_facts: False
+
+  tasks:
+    - name: Query application profiles
+      aci_ap:
+        host: apic1
+        username: "{{ username }}"
+        password: "{{ password }}" 
+        validate_certs: no
+        tenant: "{{ item.tenant }}"
+        ap: "{{ item.name }}"
+        state: query
+      with_items: "{{ anps }}"
+      register: output
+
+    - debug:
+        msg: "{{ output.results }}"
