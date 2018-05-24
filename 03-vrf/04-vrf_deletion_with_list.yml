@@ -1,0 +1,20 @@
+---
+
+- name: aci vrf creation
+  hosts: apic1
+  gather_facts: False
+
+  tasks:
+    - name: Add a new vrf to Tenant
+      aci_vrf:
+        host: apic1
+        username: "{{ username }}"
+        password: "{{ password }}" 
+        validate_certs: no
+        vrf: "{{ item.name }}"
+        description: "{{ item.description }}"
+        tenant: "{{ item.tenant }}"
+        policy_control_preference: "{{ item.control_preference }}"
+        policy_control_direction: "{{ item.control_direction }}"
+        state: absent
+      with_items: "{{ vrfs }}"

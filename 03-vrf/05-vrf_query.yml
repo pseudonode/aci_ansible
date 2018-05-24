@@ -1,0 +1,21 @@
+---
+
+- name: aci vrf query
+  hosts: apic1
+  gather_facts: False
+
+  tasks:
+    - name: query to validate if vrf is present
+      aci_vrf:
+        host: apic1
+        username: "{{ username }}"
+        password: "{{ password }}" 
+        validate_certs: no
+        vrf: vrf-1
+        tenant: Ansible
+        state: query
+      register: output
+
+    - debug:
+        msg: "{{ output.current[0] }}"
+

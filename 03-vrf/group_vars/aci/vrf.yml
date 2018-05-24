@@ -1,0 +1,20 @@
+---
+
+vrfs:
+  - name: "vrf-1"
+    description: "vrf 1"
+    tenant: "Ansible_Tenant_1"
+    control_preference: "enforced"
+    control_direction: "ingress"
+  
+  - name: "vrf-2"
+    description: "vrf 2"
+    tenant: "Ansible_Tenant_2"
+    control_preference: "enforced"
+    control_direction: "ingress"
+
+  - name: "vrf-3"
+    description: "vrf 3"
+    tenant: "Ansible_Tenant_3"
+    control_preference: "enforced"
+    control_direction: "ingress"

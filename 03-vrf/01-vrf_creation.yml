@@ -1,0 +1,20 @@
+---
+
+- name: aci vrf creation
+  hosts: apic1
+  gather_facts: False
+
+  tasks:
+    - name: Add a new vrf
+      aci_vrf:
+        host: apic1
+        username: "{{ username }}"
+        password: "{{ password }}" 
+        validate_certs: no
+        vrf: vrf-1
+        description: vrf 1
+        tenant: Ansible
+        policy_control_preference: enforced
+        policy_control_direction: ingress
+        state: present
+
