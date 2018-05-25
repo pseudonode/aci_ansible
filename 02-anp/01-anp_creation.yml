@@ -1,12 +1,12 @@
 ---
 
-- name: aci tenant creation
+- name: aci anp creation
   hosts: apic1
   gather_facts: False
 
   tasks:
-    - name: Add a new tenant
-      aci_ap:
+    - name: Add a new enp
+      aci_epg:
         host: apic1
         username: "{{ username }}"
         password: "{{ password }}" 
