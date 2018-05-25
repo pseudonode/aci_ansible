@@ -1,0 +1,18 @@
+---
+
+- name: aci tenant deletion
+  hosts: apic1
+  gather_facts: False
+
+  tasks:
+    - name: Delete ANP from tenant
+      aci_ap:
+        host: apic1
+        username: "{{ username }}"
+        password: "{{ password }}" 
+        validate_certs: no
+        tenant: "{{ item.tenant }}"
+        ap: "{{ item.name }}"
+        description: "{{ item.description }}"
+        state: absent
+      with_items: "{{ anps }}"

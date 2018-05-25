@@ -1,0 +1,19 @@
+---
+
+- name: aci epg creation
+  hosts: apic1
+  gather_facts: False
+
+  tasks:
+    - name: Add a new epg
+      aci_epg:
+        host: apic1
+        username: "{{ username }}"
+        password: "{{ password }}" 
+        validate_certs: no
+        tenant: Ansible
+        ap: ANP-APP-1
+        epg:
+        description: Application Profile
+        bd:
+        state: present
