@@ -1,11 +1,11 @@
 ---
 
-- name: aci epg creation
+- name: aci epg deletion
   hosts: apic1
   gather_facts: False
 
   tasks:
-    - name: Add a new epg
+    - name: delete epg
       aci_epg:
         host: apic1
         username: "{{ username }}"
@@ -14,6 +14,4 @@
         tenant: Ansible
         ap: "ANP-APP-1"
         epg: "EPG-1"
-        description: "Endpoint Group 1"
-        bd: BD-1
-        state: present
+        state: absent

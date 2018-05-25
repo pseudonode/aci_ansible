@@ -1,0 +1,20 @@
+---
+
+epg:
+  - tenant: Ansible
+    ap: ANP-APP-1
+    name: EPG-1
+    description: Endpoint Group 1
+    bd: BD-1
+
+  - tenant: Ansible
+    ap: ANP-APP-1
+    name: EPG-2
+    description: Endpoint Group 2
+    bd: BD-2
+
+  - tenant: Ansible
+    ap: ANP-APP-1
+    name: EPG-3
+    description: Endpoint Group 3
+    bd: BD-3

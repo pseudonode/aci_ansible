@@ -1,0 +1,18 @@
+---
+
+- name: aci epg deletion with list
+  hosts: apic1
+  gather_facts: False
+
+  tasks:
+    - name: delete epg
+      aci_epg:
+        host: apic1
+        username: "{{ username }}"
+        password: "{{ password }}" 
+        validate_certs: no
+        tenant: "{{ item.tenant }}"
+        ap: "{{ item.ap }}"
+        epg: "{{ item.name }}"
+        state: absent
+      with_items: "{{ epg }}"

@@ -1,18 +1,20 @@
 ---
 
-- name: aci tenant deletion
+- name: aci epg creation with list
   hosts: apic1
   gather_facts: False
 
   tasks:
-    - name: Delete ANP from tenant
-      aci_ap:
+    - name: Add a new epg
+      aci_epg:
         host: apic1
         username: "{{ username }}"
         password: "{{ password }}" 
         validate_certs: no
         tenant: "{{ item.tenant }}"
-        ap: "{{ item.name }}"
+        ap: "{{ item.ap }}"
+        epg: "{{ item.name }}"
         description: "{{ item.description }}"
-        state: absent
-      with_items: "{{ anps }}"
+        bd: "{{ item.bd }}"
+        state: present
+      with_items: "{{ epg }}"
