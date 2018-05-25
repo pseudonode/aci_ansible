@@ -1,0 +1,18 @@
+---
+
+- name: aci bd creation
+  hosts: apic1
+  gather_facts: False
+
+  tasks:
+    - name: create bd
+      aci_bd:
+        host: apic1
+        username: "{{ username }}"
+        password: "{{ password }}" 
+        validate_certs: no
+        tenant: Ansible
+        bd: BD-1
+        description: "Bridge Domain 1"
+        vrf: default
+        state: present

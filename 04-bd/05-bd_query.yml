@@ -1,0 +1,20 @@
+---
+
+- name: aci bd query
+  hosts: apic1
+  gather_facts: False
+
+  tasks:
+    - name: query bd
+      aci_bd:
+        host: apic1
+        username: "{{ username }}"
+        password: "{{ password }}" 
+        validate_certs: no
+        tenant: Ansible
+        bd: BD-1
+        state: query
+      register: output
+
+    - debug:
+        msg: "{{ output }}"

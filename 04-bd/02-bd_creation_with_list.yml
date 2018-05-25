@@ -1,0 +1,44 @@
+---
+
+- name: aci bd creation
+  hosts: apic1
+  gather_facts: False
+
+  tasks:
+    - name: Add a new bd
+      aci_bd:
+        host: apic1
+        username: "{{ username }}"
+        password: "{{ password }}" 
+        validate_certs: no
+        tenant: "{{ item.tenant }}"
+        bd: "{{ item.name }}"
+        description: "{{ item.description }}"
+        vrf: "{{ item.vrf }}"
+        state: present
+      with_items: "{{ bds }}"
+
+    - name: create a subnet with options
+      aci_bd_subnet:
+        host: apic1
+        username: "{{ username }}"
+        password: "{{ password }}" 
+        validate_certs: no
+        tenant: "{{ item.tenant }}"
+        bd: "{{ item.name }}"
+        subnet_name: "{{ item.subnet_name }}"
+        gateway: "{{ item.gw }}"
+        mask: "{{ item.mask }}"
+        scope: "{{ item.scope }}"
+      with_items: "{{ bds }}"
+
+    - name: associate a bd to an existing l3out
+      aci_bd_to_l3out:
+        host: apic1
+        username: "{{ username }}"
+        password: "{{ password }}"
+        validate_certs: no
+        tenant: "{{ item.tenant }}"
+        bd: "{{ item.name }}"
+        l3out: "{{ item.l3out }}"
+      with_items: "{{ bds }}"

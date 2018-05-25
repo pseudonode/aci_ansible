@@ -1,0 +1,32 @@
+---
+
+bds:
+  - name: "BD-1"
+    description: "Bridge Domain 1"
+    tenant: "Ansible"
+    vrf: "default"
+    subnet_name: "subnet1"
+    gw: "10.84.10.1"
+    mask: "24"
+    scope: "public"
+    l3out: "SESK-L3OUT-BGP"
+
+  - name: "BD-2"
+    description: "Bridge Domain 2"
+    tenant: "Ansible"
+    vrf: "default"
+    subnet_name: "subnet1"
+    gw: "10.84.11.1"
+    mask: "24"
+    scope: "public"
+    l3out: "SESK-L3OUT-BGP"
+
+  - name: "BD-3"
+    description: "Bridge Domain 3"
+    tenant: "Ansible"
+    vrf: "default"
+    subnet_name: "subnet1"
+    gw: "10.84.12.1"
+    mask: "24"
+    scope: "public"
+    l3out: "SESK-L3OUT-BGP"

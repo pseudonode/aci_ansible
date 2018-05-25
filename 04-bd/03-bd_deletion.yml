@@ -1,0 +1,16 @@
+---
+
+- name: aci bd deletion
+  hosts: apic1
+  gather_facts: False
+
+  tasks:
+    - name: delete bd
+      aci_bd:
+        host: apic1
+        username: "{{ username }}"
+        password: "{{ password }}" 
+        validate_certs: no
+        tenant: Ansible
+        bd: BD-1
+        state: absent

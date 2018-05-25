@@ -1,0 +1,21 @@
+---
+
+- name: aci bd creation
+  hosts: apic1
+  gather_facts: False
+
+  tasks:
+    - name: create bd
+      aci_bd:
+        host: apic1
+        username: "{{ username }}"
+        password: "{{ password }}" 
+        validate_certs: no
+        tenant: "{{ item.tenant }}"
+        bd: "{{ item.name }}"
+        state: query
+      with_items: "{{ bds }}"
+      register: output
+
+    - debug:
+        msg: "{{ output }}"
