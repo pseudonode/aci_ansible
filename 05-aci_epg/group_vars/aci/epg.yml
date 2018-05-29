@@ -1,0 +1,43 @@
+---
+
+epg:
+  - tenant: Ansible
+    ap: ANP-APP-1
+    name: EPG-1
+    description: Endpoint Group 1
+    bd: BD-1
+    domain: AZ-VMWARE-POC
+    domain_type: vmm
+    vm_provider: vmware
+    contract1_name: EPG-TO-EPG
+    contract1_type: provider
+    contract2_name: EPG-TO-L3OUT
+    contract2_type: provider
+
+
+
+  - tenant: Ansible
+    ap: ANP-APP-1
+    name: EPG-2
+    description: Endpoint Group 2
+    bd: BD-2
+    domain: AZ-VMWARE-POC
+    domain_type: vmm
+    vm_provider: vmware
+    contract1_name: EPG-TO-EPG
+    contract1_type: provider
+    contract2_name: EPG-TO-L3OUT
+    contract2_type: provider
+
+  - tenant: Ansible
+    ap: ANP-APP-1
+    name: EPG-3
+    description: Endpoint Group 3
+    bd: BD-3
+    domain: AZ-VMWARE-POC
+    domain_type: vmm
+    vm_provider: vmware
+    contract1_name: EPG-TO-EPG
+    contract1_type: provider
+    contract2_name: EPG-TO-L3OUT
+    contract2_type: provider

@@ -1,0 +1,21 @@
+---
+
+- name: query epg
+  hosts: apic1
+  gather_facts: False
+
+  tasks:
+    - name: query epg
+      aci_epg:
+        host: apic1
+        username: "{{ username }}"
+        password: "{{ password }}" 
+        validate_certs: no
+        tenant: Ansible
+        ap: "ANP-APP-1"
+        epg: "EPG-1"
+        state: query
+      register: output
+
+    - debug:
+        msg: "{{ output }}"

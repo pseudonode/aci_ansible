@@ -1,0 +1,39 @@
+---
+
+epg_contracts:
+  - tenant: Ansible
+    ap: ANP-APP-1
+    epg: EPG-1
+    name: EPG-TO-EPG
+    type: provider
+
+  - tenant: Ansible
+    ap: ANP-APP-1
+    epg: EPG-2
+    name: EPG-TO-EPG
+    type: provider
+
+  - tenant: Ansible
+    ap: ANP-APP-1
+    epg: EPG-3
+    name: EPG-TO-EPG
+    type: provider
+
+l3out_contracts:
+  - tenant: Ansible
+    ap: ANP-APP-1
+    epg: EPG-1
+    name: EPG-TO-L3OUT
+    type: provider
+
+  - tenant: Ansible
+    ap: ANP-APP-1
+    epg: EPG-2
+    name: EPG-TO-L3OUT
+    type: provider
+
+  - tenant: Ansible
+    ap: ANP-APP-1
+    epg: EPG-3
+    name: EPG-TO-L3OUT
+    type: provider

@@ -1,0 +1,33 @@
+---
+
+- name: aci epg deletion with list
+  hosts: apic1
+  gather_facts: False
+
+  tasks:
+    - name: remove domain to EPG binding
+      aci_epg_to_domain:
+        host: apic1
+        username: "{{ username }}"
+        password: "{{ password }}" 
+        validate_certs: no
+        tenant: "{{ item.tenant }}"
+        ap: "{{ item.ap }}"
+        epg: "{{ item.name }}"
+        domain: "{{ item.domain }}"
+        domain_type: "{{ item.domain_type }}"
+        vm_provider: "{{ item.vm_provider }}"
+        state: absent
+      with_items: "{{ epg }}"
+
+    - name: remove epg
+      aci_epg:
+        host: apic1
+        username: "{{ username }}"
+        password: "{{ password }}" 
+        validate_certs: no
+        tenant: "{{ item.tenant }}"
+        ap: "{{ item.ap }}"
+        epg: "{{ item.name }}"
+        state: absent
+      with_items: "{{ epg }}"

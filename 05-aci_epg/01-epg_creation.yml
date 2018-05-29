@@ -1,0 +1,59 @@
+---
+
+- name: aci epg creation
+  hosts: apic1
+  gather_facts: False
+
+  tasks:
+    - name: Add a new epg
+      aci_epg:
+        host: apic1
+        username: "{{ username }}"
+        password: "{{ password }}" 
+        validate_certs: no
+        tenant: Ansible
+        ap: "ANP-APP-1"
+        epg: "EPG-1"
+        description: "Endpoint Group 1"
+        bd: BD-1
+        state: present
+
+    - name: Add a new domain to EPG binding
+      aci_epg_to_domain:
+        host: apic1
+        username: "{{ username }}"
+        password: "{{ password }}" 
+        validate_certs: no
+        tenant: Ansible
+        ap: "ANP-APP-1"
+        epg: "EPG-1"
+        domain: AZ-VMWARE-POC
+        domain_type: vmm
+        vm_provider: vmware
+        state: present
+
+    - name: Add a new contract for EPG to EPG Communication
+      aci_epg_to_contract:
+        host: apic1
+        username: "{{ username }}"
+        password: "{{ password }}" 
+        validate_certs: no
+        tenant: Ansible
+        ap: "ANP-APP-1"
+        epg: "EPG-1"
+        contract: EPG-TO-EPG
+        contract_type: provider
+        state: present
+
+    - name: Add a new contract for EPG to L3OUT Communication
+      aci_epg_to_contract:
+        host: apic1
+        username: "{{ username }}"
+        password: "{{ password }}" 
+        validate_certs: no
+        tenant: Ansible
+        ap: "ANP-APP-1"
+        epg: "EPG-1"
+        contract: EPG-TO-L3OUT
+        contract_type: provider
+        state: present
