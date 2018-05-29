@@ -1,0 +1,22 @@
+---
+
+datacenter: ACI-LAB
+folder: /Discovered virtual machine
+name: ansiblevm1
+state: poweredon
+template: centos7
+disk_size: 20
+provision: thin
+datastore: SAN-DS-01
+memory: 2048
+cpus: 2
+network_name: Ansible|ANP-APP-1|EPG-1
+network_type: static
+ip: "172.22.9.21"
+netmask: "255.255.255.0"
+gateway: "172.22.9.250"
+mac: 00:50:56:00:00:aa
+vm_hostname: "ansiblevm1"
+dns1: 8.8.8.8
+dns2: 1.1.1.1
+
